@@ -10,9 +10,9 @@ int main(void) {
 
   File file = File("./log/");
   Todo todo = Todo("run", "do a 7k run");
-  std::cout << todo.getName() << std::endl;
+  // std::cout << todo.getName() << std::endl;
   todo.updateName("7k run");
-  std::cout << todo.getName() << std::endl;
+  // std::cout << todo.getName() << std::endl;
   file.save();
 
   return 0;

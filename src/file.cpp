@@ -1,11 +1,12 @@
 
 #include "file.hpp"
+#include "string_utils.hpp"
+#include "todo.hpp"
 
 #include <chrono>
 #include <ctime>
 #include <fstream>
 #include <iostream>
-#include <memory>
 #include <ostream>
 #include <stdexcept>
 #include <string>
@@ -30,14 +31,28 @@ File::File(std::string d) {
 
   std::strftime(buffer, sizeof(buffer), "todo %Y-%m-%d.txt", &tm);
 
-  // openFile(d + buffer);
-  // // load into the todo list
-  // close();
+  // load into the todo list
+  std::string line;
+  std::ifstream readFile(d + buffer);
+  while (std::getline(readFile, line)) {
+    std::cout << line << std::endl;
+    std::vector<std::string> l = utils::split(line, ";");
+    if (l.size() == 3) {
+      if (l[2] == "Complted") {
+        Todo t(l[0], l[1], true);
+        todoList.push_back(t);
+      } else {
+        Todo t(l[0], l[1], false);
+        todoList.push_back(t);
+      }
+    }
+  }
 
   name = buffer;
 };
 
 void File::openFile(std::string path) {
+  std::cout << path << std::endl;
   file.open(path, std::ios::app);
 
   if (!file)

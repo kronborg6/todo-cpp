@@ -11,6 +11,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_executable(${PROJECT_NAME}
     src/todo.cpp
     src/file.cpp
+    src/string_utils.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
