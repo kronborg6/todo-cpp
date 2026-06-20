@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-void Todo::updateName(std::string newName) { name = newName; }
+void Todo::updateName(std::string newName) { name_ = newName; }
 
 int main(void) {
 

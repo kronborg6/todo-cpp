@@ -39,11 +39,11 @@ File::File(std::string d) {
     std::vector<std::string> l = utils::split(line, ";");
     if (l.size() == 3) {
       if (l[2] == "Complted") {
-        Todo t(l[0], l[1], true);
-        todoList.push_back(t);
+        Todo todo(l[0], l[1], true);
+        todoList.push_back(todo);
       } else {
-        Todo t(l[0], l[1], false);
-        todoList.push_back(t);
+        Todo todo(l[0], l[1], false);
+        todoList.push_back(todo);
       }
     }
   }
