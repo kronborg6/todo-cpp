@@ -16,6 +16,6 @@ private:
   std::string name;
   std::vector<Todo> todoList;
 
-  void openFile(std::string path);
+  void openFile(std::string path, bool overRide);
   void close() { file.close(); }
 };

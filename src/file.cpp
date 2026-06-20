@@ -17,9 +17,9 @@ File::File(std::string d) {
     throw std::invalid_argument("dir cannot be emtpy");
 
   todoList.reserve(15);
-  Todo todo("hello", "g");
-  std::cout << todo.getName() << std::endl;
-  todoList.push_back(todo);
+  // Todo todo("hello", "g");
+  // std::cout << todo.getName() << std::endl;
+  // todoList.push_back(todo);
 
   char buffer[80];
   dir = d;
@@ -51,9 +51,20 @@ File::File(std::string d) {
   name = buffer;
 };
 
-void File::openFile(std::string path) {
+void File::openOverrideFile(std::string path) {
   std::cout << path << std::endl;
-  file.open(path, std::ios::app);
+  file.open(path);
+
+  if (!file)
+    throw std::runtime_error(
+        "failed to create file, make sure the path is cronect");
+}
+void File::openFile(std::string path, bool overwrite = false) {
+  std::cout << path << std::endl;
+  if (overwrite)
+    file.open(path);
+  else
+    file.open(path, std::ios::app);
 
   if (!file)
     throw std::runtime_error(
@@ -61,7 +72,7 @@ void File::openFile(std::string path) {
 }
 
 void File::save() {
-  openFile(dir + name);
+  openFile(dir + name, true);
   for (const auto &todo : todoList) {
     std::string complted = todo.iscomplte() ? "complted" : "notComplted";
     file << todo.getName() << ";" << todo.getDesc() << ";" << complted
