@@ -51,14 +51,6 @@ File::File(std::string d) {
   name = buffer;
 };
 
-void File::openOverrideFile(std::string path) {
-  std::cout << path << std::endl;
-  file.open(path);
-
-  if (!file)
-    throw std::runtime_error(
-        "failed to create file, make sure the path is cronect");
-}
 void File::openFile(std::string path, bool overwrite = false) {
   std::cout << path << std::endl;
   if (overwrite)
