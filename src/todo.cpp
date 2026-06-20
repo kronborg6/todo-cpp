@@ -13,5 +13,7 @@ int main(void) {
   std::cout << todo.getName() << std::endl;
   todo.updateName("7k run");
   std::cout << todo.getName() << std::endl;
+  file.save();
+
   return 0;
 }

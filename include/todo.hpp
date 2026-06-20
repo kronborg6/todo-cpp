@@ -9,6 +9,7 @@ public:
   void markCompleted() { complete = true; }
   void updateName(std::string);
   std::string getName() const { return name; }
+  std::string getDesc() const { return desc; }
 
 private:
   std::string name;
