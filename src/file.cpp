@@ -33,7 +33,7 @@ File::File(std::string d) {
 
   // load into the todo list
   std::string line;
-  std::ifstream readFile(d + buffer);
+  std::ifstream readFile(d);
   while (std::getline(readFile, line)) {
     std::cout << line << std::endl;
     std::vector<std::string> l = utils::split(line, ";");

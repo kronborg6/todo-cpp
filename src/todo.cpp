@@ -2,6 +2,7 @@
 #include "todo.hpp"
 #include "file.hpp"
 #include <cstddef>
+#include <cstdio>
 #include <filesystem>
 #include <format>
 #include <iostream>
@@ -42,21 +43,20 @@ int main(void) {
     std::cout << std::format("[{}]: ", i) << files[i].getName() << std::endl;
   }
 
-  int pick;
+  size_t pick;
 
   std::cin >> pick;
 
   std::cout << pick << std::endl;
 
-  if (pick > static_cast<int>(current_count)) {
+  if (pick > current_count) {
     std::cout << "wong number stubid" << std::endl;
   }
 
-  for (const auto &todo : files[static_cast<size_t>(pick)].todoList) {
-    std::cout << todo.getName() << std::endl;
-    std::cout << todo.getName() << std::endl;
-    std::cout << todo.getName() << std::endl;
-    std::cout << todo.getName() << std::endl;
+  // for (const auto &todo : files[static_cast<size_t>(pick)].todoList) {
+  for (const auto &todo : files[pick].todoList) {
+    std::cout << todo.getName() << ": " << todo.getDesc() << '\n';
+    // std::cout << todo.getName() << std::endl;
   }
 
   return 0;
