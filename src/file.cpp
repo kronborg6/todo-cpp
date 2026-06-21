@@ -48,7 +48,7 @@ File::File(std::string d) {
     }
   }
 
-  name = buffer;
+  name_ = buffer;
 };
 
 void File::openFile(std::string path, bool overwrite = false) {
@@ -64,7 +64,7 @@ void File::openFile(std::string path, bool overwrite = false) {
 }
 
 void File::save() {
-  openFile(dir + name, true);
+  openFile(dir + name_, true);
   for (const auto &todo : todoList) {
     std::string complted = todo.iscomplte() ? "complted" : "notComplted";
     file << todo.getName() << ";" << todo.getDesc() << ";" << complted
