@@ -10,17 +10,24 @@ project(todo
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+find_package(Curses REQUIRED)
 
 add_executable(${PROJECT_NAME}
     src/todo.cpp
     src/file.cpp
     src/string_utils.cpp
+    src/input.cpp
 )
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
 
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${PROJECT_SOURCE_DIR}/include
+    ${CURSES_INCLUDE_DIRS}
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    ${CURSES_LIBRARIES}
 )
 
 target_compile_options(${PROJECT_NAME} PRIVATE

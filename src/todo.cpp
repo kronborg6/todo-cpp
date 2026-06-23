@@ -1,6 +1,7 @@
 
 #include "todo.hpp"
 #include "file.hpp"
+#include "input.hpp"
 #include <cstddef>
 #include <cstdio>
 #include <filesystem>
@@ -15,6 +16,12 @@
 void Todo::updateName(std::string newName) { name_ = newName; }
 
 int main(void) {
+
+  key_input();
+  return 0;
+}
+
+int mainOLD(void) {
 
   // File file = File("./log/");
   // Todo todo = Todo("run", "do a 7k run");
@@ -51,6 +58,8 @@ int main(void) {
 
   if (pick > current_count) {
     std::cout << "wong number stubid" << std::endl;
+    throw std::runtime_error("can't do that");
+    return 1;
   }
 
   // for (const auto &todo : files[static_cast<size_t>(pick)].todoList) {
