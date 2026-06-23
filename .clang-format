@@ -1,0 +1,13 @@
+BasedOnStyle: LLVM
+
+AllowShortFunctionsOnASingleLine: None
+AllowShortEnumsOnASingleLine: false
+
+PointerAlignment: Left
+
+BinPackArguments: false
+BinPackParameters: false
+
+ColumnLimit: 100
+
+IndentAccessModifiers: true

@@ -27,8 +27,11 @@ void key_input() {
       printw("\nRight");
       break;
 
-    case 'q':
-      return;
+      // case 'q':
+      //   refresh();
+      //   getch();
+      //   endwin();
+      //   return;
 
     default:
       printw("%c", ch);
